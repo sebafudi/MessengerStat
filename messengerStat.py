@@ -11,22 +11,20 @@ from collections import Counter
 allMsgUnFormatted = []
 allMsg = []
 
-
 while True:
 	path = input("Location to Messenger Files: ")
 	path = path.replace("\"", "")
 	if path == '':
 		path = '.\\MessengerFiles'
 	if os.path.isdir(path):
-		for filename in os.listdir(path):	# for every file in dir
-			if re.match("Counter for Messenger.*?(\d*?).html", filename):	# check for name
-				with open(path + '\\' + filename, encoding='utf-8') as fbFile:	# open file
-					fbFileContent = fbFile.read()	# read file
-				result = re.findall('<div id="(\d*?)" title="(.*?)" time="(.*?)" class="(.*?)"><span class="message-text">(.*?)<\/span>.*?</div>(?s)', fbFileContent, flags=0)	# scan for messages regex
+		for filename in os.listdir(path):
+			if re.match("Counter for Messenger.*?(\d*?).html", filename):
+				with open(path + '\\' + filename, encoding='utf-8') as fbFile:
+					fbFileContent = fbFile.read()
+				result = re.findall('<div id="(\d*?)" title="(.*?)" time="(.*?)" class="(.*?)"><span class="message-text">(.*?)<\/span>.*?</div>(?s)', fbFileContent, flags=0)
 				for i in result:
 					if i[4] is not '':
-						# allMsg.append((datetime.datetime.strptime(i[2], "%m/%d/%Y %I:%M:%S %p")).month)	# create allMsg tuple
-						allMsg.append((i[0], i[1], datetime.datetime.strptime(i[2], "%m/%d/%Y %I:%M:%S %p"), i[3], i[4]))	# create allMsg tuple
+						allMsg.append((i[0], i[1], datetime.datetime.strptime(i[2], "%m/%d/%Y %I:%M:%S %p"), i[3], i[4]))
 		break;
 
 # print(allMsg)
