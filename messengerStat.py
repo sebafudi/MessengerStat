@@ -13,8 +13,8 @@ allMsg = []
 # path = ''
 path = input("Location to Messenger Files: ")
 path = path.replace("\"", "")
-print(path)
-# path = '.\\MessengerFiles'
+if path == '':
+	path = '.\\MessengerFiles'
 
 for filename in listdir(path):	# for every file in dir
 	if re.match("Counter for Messenger.*?(\d*?).html", filename):	# check for name
