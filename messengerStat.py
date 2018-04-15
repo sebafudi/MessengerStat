@@ -30,8 +30,8 @@ while True:
 # print(allMsg)
 # allMsg = [(msg[0], msg[1], datetime.datetime.strptime(msg[2], "%m/%d/%Y %H:%M:%S %p"), msg[3], msg[4]) for msg in allMsg]
 
-for msg in sorted(allMsg, key=lambda x: x[2], reverse=False):
- 	print(msg[0], msg[1], msg[2], msg[3], msg[4])
+# for msg in sorted(allMsg, key=lambda x: x[2], reverse=False):
+#  	print(msg[0], msg[1], msg[2], msg[3], msg[4])
 
 # /Code
 
