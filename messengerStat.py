@@ -27,11 +27,25 @@ while True:
 						allMsg.append((i[0], i[1], datetime.datetime.strptime(i[2], "%m/%d/%Y %I:%M:%S %p"), i[3], i[4]))
 		break;
 
+allMsgC = []
+
+for msg in allMsg:
+	allMsgC.append(msg[4].lower())
+
+for i in range(0, 25):
+	print((Counter(allMsgC).most_common(25))[i])
+
 # print(allMsg)
 # allMsg = [(msg[0], msg[1], datetime.datetime.strptime(msg[2], "%m/%d/%Y %H:%M:%S %p"), msg[3], msg[4]) for msg in allMsg]
+# with open('messages1.txt', 'w', encoding='utf-8') as messagesf:
+# 	for msg in sorted(allMsg, key=lambda x: x[0], reverse=False):
+# 		#print(msg[0], msg[1], msg[2], msg[3], msg[4])
+# 		messagesf.write(str(msg[0] + ' ' + msg[1] + ' ' + str(msg[2].date()) + ' ' + str(msg[2].time()) + ' ' +  msg[4]) + '\n')
 
-# for msg in sorted(allMsg, key=lambda x: x[2], reverse=False):
-#  	print(msg[0], msg[1], msg[2], msg[3], msg[4])
+
+# with open('words.txt', 'w', encoding='utf-8') as wordsf:
+# 	for i in range (0, 100):
+# 		wordsf.write(str(allWordsC.most_common(100)[i][0]) + ',' + str(allWordsC.most_common(100)[i][1]) + '\n')
 
 # /Code
 
