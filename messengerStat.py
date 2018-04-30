@@ -24,7 +24,10 @@ while True:
 				result = re.findall('<div id="(\d*?)" title="(.*?)" time="(.*?)" class="(.*?)"><span class="message-text">(.*?)<\/span>.*?</div>(?s)', fbFileContent, flags=0)
 				for i in result:
 					if i[4] is not '':
-						allMsg.append((i[0], i[1], datetime.datetime.strptime(i[2], "%m/%d/%Y %I:%M:%S %p"), i[3], i[4]))
+						#allMsg.append((i[0], i[1], datetime.datetime.strptime(i[2], "%m/%d/%Y %I:%M:%S %p"), i[3], i[4]))
+						a = re.findall('^(.*?)\/(.*?)\/(.*?) (.*?):(.*?):(.*?) (.*?)$(?s)', i[2])[0]
+						dat = datetime.datetime(int(a[2]), int(a[0]), int(a[1]), int(a[3]) if a[6] == 'AM' else (int(a[3])+12 if a[3] != '12' else 0), int(a[4]), int(a[5]))
+						allMsg.append((i[0], i[1], dat, i[3], i[4]))
 		break;
 
 # time="3/16/2018 8:08:52 PM" <- Sample date
