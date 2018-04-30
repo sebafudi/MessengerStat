@@ -27,6 +27,8 @@ while True:
 						allMsg.append((i[0], i[1], datetime.datetime.strptime(i[2], "%m/%d/%Y %I:%M:%S %p"), i[3], i[4]))
 		break;
 
+# time="3/16/2018 8:08:52 PM" <- Sample date
+
 allMsgC = []
 
 for msg in allMsg:
